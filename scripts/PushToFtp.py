@@ -6,7 +6,7 @@ from ftplib import FTP
 import sys
 import os
 
-FilesToPut = ['php/basedata.php']
+FilesToPut = ['../php/basedata.php']
 
 def Push( FtpServer, Username, Password, uploadlist = FilesToPut, port = 21, passive = False ):
 	print >> sys.stderr, "Login to %s:%s using %s:%s"%(FtpServer, port, Username, 'xxx')
