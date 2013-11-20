@@ -6,26 +6,37 @@ import urllib2
 import json
 
 
-# command line args.
-if len(sys.argv) < 3:
-    print "usage %s <id> <URL>"%sys.argv[0]
-    exit( 1 )
+def FetchBaseData( URL ):
+	
+	print 'Fetching basedata from %s :'%(URL,)
 
-GroupId = sys.argv[1]
-URL = sys.argv[2]
+	# fetch data
+	req = urllib2.Request(URL)
+	response = urllib2.urlopen(req)
+	jsondata = response.read() 
+	response.close()
 
-print '%s: 0: Fetching basedata from %s :'%(GroupId, URL)
+	# parsing json
+	data = json.loads( jsondata )
 
-# fetch data
-req = urllib2.Request(URL)
-response = urllib2.urlopen(req)
-jsondata = response.read() 
-response.close()
+	print 'Data fetched: hostname: %s, php version: %s, timestamp: %s'%(data['hostname'], data['version'], data['date'])
 
-# parsing json
-data = json.loads( jsondata )
+	return data
 
-print '%s: 10: Data fetched: hostname: %s, php version: %s, timestamp: %s'%(GroupId, data['hostname'], data['version'], data['date'])
+if __name__ == '__main__':
+
+	# command line args.
+	if len(sys.argv) < 3:
+	    print "usage %s <id> <URL>"%sys.argv[0]
+	    exit( 1 )
+
+	GroupId = sys.argv[1]
+	URL = sys.argv[2]
+
+
+	# parsing json
+	data = FetchBaseData( URL )
+
 
 
 
