@@ -23,7 +23,10 @@ if __name__ == "__main__":
 			WebUrl = config.get(group, 'weburl' )
 			port = config.get(group, 'port' )
 			passive = config.get(group, 'passive' )
-			Push( FtpServer, Username, Passwd, port=port, passive=True if passive == 'True' else False)
+			starttls = config.get(group, 'starttls' )
+			Push( FtpServer, Username, Passwd, port=port, 
+				passive=True if passive == 'True' else False,
+				StartTls=True if starttls == 'True' else False)
 		except Exception, e:
 			print "Something went wrong: %s"%e
 
