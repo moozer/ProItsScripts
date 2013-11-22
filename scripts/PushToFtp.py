@@ -9,7 +9,7 @@ import os
 FilesToPut = ['../php/basedata.php']
 
 def Push( FtpServer, Username, Password, uploadlist = FilesToPut, port = 21, passive = False, StartTls = False ):
-	print >> sys.stderr, "Login to %s:%s using %s:%s (%s%s)"%(FtpServer, port, Username, 'xxx', 
+	print "Login to %s:%s using %s:%s (%s%s)"%(FtpServer, port, Username, 'xxx', 
 				'passive' if passive else 'active', 
 				'/tls' if StartTls else '')
 
