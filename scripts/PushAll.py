@@ -11,7 +11,7 @@ GroupNames = ["Group01", "Group02", "Group03", "Group04", "Group05", "Group06", 
 
 if __name__ == "__main__":
 	#config = ConfigParser.ConfigParser()
-	config = ConfigParser.SafeConfigParser( {'port': '21', 'passive': False })
+	config = ConfigParser.SafeConfigParser( {'port': '21', 'passive': False, 'starttls': False })
 	config.read( Grouplist )
 
 	for group in GroupNames:
