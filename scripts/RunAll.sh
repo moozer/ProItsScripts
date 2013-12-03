@@ -1,8 +1,9 @@
 #!/bin/sh
 
 # files...
-WebLog="$HOME/web.log"
-FtpLog="$HOME/ftp.log"
+DATE=$(date "+%y%m%d")
+WebLog="$HOME/${DATE}_web.log"
+FtpLog="$HOME/${DATE}_ftp.log"
 
 cd $(dirname $(realpath $0))
 
