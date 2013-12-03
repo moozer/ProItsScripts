@@ -24,11 +24,11 @@ if __name__ == "__main__":
 			port = config.get(group, 'port' )
 			passive = config.get(group, 'passive' )
 			starttls = config.get(group, 'starttls' )
-            sftp = config.get(group, 'sftp')
+                        sftp = config.get(group, 'sftp')
 			Push( FtpServer, Username, Passwd, port=port, 
 				passive=True if passive == 'True' else False,
 				StartTls=True if starttls == 'True' else False,
-                Sftp=True if sftp == 'True' else false)
+                                Sftp=True if sftp == 'True' else false)
 		except Exception, e:
 			print "Something went wrong: %s"%e
 
