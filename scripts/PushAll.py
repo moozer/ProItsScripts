@@ -28,7 +28,7 @@ if __name__ == "__main__":
 			Push( FtpServer, Username, Passwd, port=port, 
 				passive=True if passive == 'True' else False,
 				StartTls=True if starttls == 'True' else False,
-                                Sftp=True if sftp == 'True' else false)
+                                Sftp=True if sftp == 'True' else False)
 		except Exception, e:
 			print "Something went wrong: %s"%e
 
