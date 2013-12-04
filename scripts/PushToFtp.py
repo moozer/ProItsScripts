@@ -35,8 +35,9 @@ def Push( FtpServer, Username, Password, uploadlist = FilesToPut, port = 21, pas
                 ftp = FTP()
 
             ftp.connect( FtpServer, port )
-	        ftp.set_pasv( passive )
-
+	    ftp.login( Username, Password)
+	    ftp.set_pasv( passive )
+                
 	        if StartTls:
                 ftp.prot_p()
 
