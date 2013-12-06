@@ -10,7 +10,7 @@ import paramiko
 FilesToPut = ['../php/basedata.php']
 
 def Push( FtpServer, Username, Password, uploadlist = FilesToPut, port = 21, passive = False, Sftp = False ):
-        print "Login to %s:%s using %s:%s (%s)"(FtpServer, port, Username, 'xxx', 
+        print "Login to %s:%s using %s:%s (%s)"%(FtpServer, port, Username, 'xxx', 
 				'passive' if passive else 'active')
                 
         if Sftp:
@@ -19,10 +19,9 @@ def Push( FtpServer, Username, Password, uploadlist = FilesToPut, port = 21, pas
             transport.connect(username = Username, password = Password)
             sftp = paramiko.SFTPClient.from_transport(transport)
             
-            print "Uploading file"
-            filepath = '../php/basedata.php'
-	    localpath = 'basedata.php'
-	    sftp.put(filepath, localpath)
+            for f in uploadlist:
+		    print "uploading %s"%f		
+		    sftp.put(f, os.path.basename(f))
             sftp.close()
             transport.close()
 
