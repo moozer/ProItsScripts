@@ -22,29 +22,29 @@ def Push( FtpServer, Username, Password, uploadlist = FilesToPut, port = 21, pas
             
             print "Uploading file"
   
-            filepath = '../php/basedata.php'
-            localpath = 'basedata.php'
-            sftp.put(filepath, localpath)
+	    filepath = '../php/basedata.php'
+	    localpath = 'basedata.php'
+	    sftp.put(filepath, localpath)
             sftp.close()
             transport.close()
 
         else:
             if StartTls:
-                ftp = FTP_TLS()
-	        else:
-                ftp = FTP()
+                    ftp = FTP_TLS()
+	    else:
+                    ftp = FTP()
 
             ftp.connect( FtpServer, port )
-	    ftp.login( Username, Password)
+            ftp.login( Username, Password ) 
 	    ftp.set_pasv( passive )
-                
-	        if StartTls:
-                ftp.prot_p()
+
+	    if StartTls:
+	            ftp.prot_p()
 
             for f in uploadlist:
-            print "uploading %s"%f
-            fp = open( f, 'rb')
-            ftp.storbinary('STOR %s'%os.path.basename(f), fp)     # send the file
+		    print "uploading %s"%f		
+		    fp = open( f, 'rb')
+		    ftp.storbinary('STOR %s'%os.path.basename(f), fp)     # send the file
             
             ftp.quit()
 
