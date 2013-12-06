@@ -11,7 +11,7 @@ GroupNames = ["Group01", "Group02", "Group03", "Group04", "Group05", "Group06", 
 
 if __name__ == "__main__":
 	#config = ConfigParser.ConfigParser()
-	config = ConfigParser.SafeConfigParser( {'port': '21', 'passive': False, 'starttls': False, 'sftp': False })
+	config = ConfigParser.SafeConfigParser( {'port': '21', 'passive': False, 'sftp': False })
 	config.read( Grouplist )
 
 	for group in GroupNames:
@@ -23,12 +23,10 @@ if __name__ == "__main__":
 			WebUrl = config.get(group, 'weburl' )
 			port = config.get(group, 'port' )
 			passive = config.get(group, 'passive' )
-			starttls = config.get(group, 'starttls' )
-                        sftp = config.get(group, 'sftp')
+			sftp = config.get(group, 'sftp')
 			Push( FtpServer, Username, Passwd, port=port, 
 				passive=True if passive == 'True' else False,
-				StartTls=True if starttls == 'True' else False,
-                                Sftp=True if sftp == 'True' else False)
+				Sftp=True if sftp == 'True' else False)
 		except Exception, e:
 			print "Something went wrong: %s"%e
 
